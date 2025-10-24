@@ -61,7 +61,6 @@ namespace _2HerenciaSimpleIES.Recursos
         public static void ListarPersonas(List<Persona> lista, int padding)
         {
             PrintHeaderBasico(padding, true);
-
             foreach (Persona p in lista)
             {
                 if (p is Alumno alumno)
@@ -89,7 +88,7 @@ namespace _2HerenciaSimpleIES.Recursos
                 "APELLIDOS".PadRight(padding) +
                 "EMAIL".PadRight(padding) +
                 "EDAD".PadRight(padding) +
-                (alumno ? "EXPEDIENTE\n" : "MATERIA").PadRight(padding));
+                (alumno ? "EXPEDIENTE\n" : "MATERIA".PadRight(padding)));
         }
 
         public static void PrintHeaderProfesor(int padding)
@@ -253,13 +252,13 @@ namespace _2HerenciaSimpleIES.Recursos
             while (!long.TryParse(Console.ReadLine().Trim(), out numExp));
 
             return new Alumno
-            {
-                Nombre = nombre,
-                Apellidos = apellidos,
-                Edad = edad,
-                Padding = padding,
-                NumeroExpediente = numExp
-            };
+            (
+                nombre,
+                apellidos,
+                edad,
+                numExp,
+                padding
+            );
         }
 
         public static void PrintPersonasAge(List<Persona> personas, bool condicion)

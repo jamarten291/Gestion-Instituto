@@ -17,14 +17,6 @@ namespace _2HerenciaSimpleIES.Clases
         {
         }
 
-        public Persona(string nombre, string apellido, uint edad, int padding)
-        {
-            Nombre = nombre;
-            Apellidos = apellido;
-            Edad = edad;
-            Padding = padding;
-        }
-
         public string Nombre 
         {
             get => nombre;
@@ -62,6 +54,14 @@ namespace _2HerenciaSimpleIES.Clases
             set => PADDING = value;
         }
 
+        public Persona(string nombre, string apellido, uint edad, int padding)
+        {
+            Nombre = nombre;
+            Apellidos = apellido;
+            Edad = edad;
+            Padding = padding;
+        }
+
         public static String CapitalizeAndClean(string s)
         {
             // Split por si hay dos nombres
@@ -85,12 +85,12 @@ namespace _2HerenciaSimpleIES.Clases
             // Primeros dos caracteres del primer apellido
             // Primeros dos caracteres del segundo apellido si lo hubiese, sino se repite lo anterior
             // Primera letra del nombre
-            string email = apellidosStr[0].Substring(0,2) 
+            string newEmail = apellidosStr[0].Substring(0,2) 
                 // Para comprobar que hay dos apellidos, compruebo si el segundo apellido es una cadena vacía
                 + (apellidosStr[1] == "" ? apellidosStr[0] : apellidosStr[1]).Substring(0,2)
                 + Nombre.ToLower().Substring(0,1);
 
-            return email;
+            return newEmail;
         }
 
         public override string ToString()

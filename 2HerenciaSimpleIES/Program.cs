@@ -11,7 +11,7 @@ namespace _2HerenciaSimpleIES
 {
     public class Program
     {
-        private const int PADDING = 12;
+        private const int PADDING = 20;
         static void Main(string[] args)
         {
             List<Persona> listaPersonas = new List<Persona>();
