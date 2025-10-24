@@ -84,7 +84,8 @@ namespace _2HerenciaSimpleIES.Clases
         public override string ToString()
         {
             return base.ToStringProfesor() + $"{YearIngreso}".PadRight(base.Padding) +
-                $"{(DestinoDefinitivo ? "SI" : "NO")}".PadRight(base.Padding);
+                $"{(DestinoDefinitivo ? "SI" : "NO")}".PadRight(base.Padding) +
+                Medico;
         }
 
         public int GetSexenios()

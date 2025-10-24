@@ -3,8 +3,10 @@ using _2HerenciaSimpleIES.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace _2HerenciaSimpleIES.Recursos
 {
@@ -190,10 +192,11 @@ namespace _2HerenciaSimpleIES.Recursos
                         apellidos,
                         edad,
                         materia,
-                        Profesor.TipoFuncionario.Interino,
+                        IntToTipoFuncionario(tipoProfesor),
                         padding
                     );
                 case 2:
+                // Salta directamente al caso 3 ya que solo cambia el tipo de funcionario
                 case 3:
                     uint anioIngreso;
                     string destinoDefinitivo;
@@ -204,16 +207,19 @@ namespace _2HerenciaSimpleIES.Recursos
                         Console.Write("AÑO DE INGRESO al cuerpo: ");
                     }
                     while (!UInt32.TryParse(Console.ReadLine(), out anioIngreso) ||
+                        // Compruebo que no sea menor que la edad mínima de ingreso (22 años)
                         DateTime.Now.Year - anioIngreso > edad - 22 ||
+                        // Compruebo que no sea mayor que 50 años de antigüedad ni que supere el año actual
                         anioIngreso < (DateTime.Now.Year - 50) || anioIngreso > DateTime.Now.Year);
 
+                    string[] opcionesDestino = {"si", "no"};
                     do
                     {
                         Console.Write("DESTINO DEFINITIVO (SI,NO): ");
-                        destinoDefinitivo = Console.ReadLine().Trim().ToLower();
+                        destinoDefinitivo = Console.ReadLine().ToLower();
                     }
                     while (string.IsNullOrWhiteSpace(destinoDefinitivo) ||
-                        !destinoDefinitivo.Equals("si") || !destinoDefinitivo.Equals("no"));
+                        !opcionesDestino.Contains(destinoDefinitivo));
 
                     bool definitivo = destinoDefinitivo.Equals("si");
 
@@ -231,7 +237,7 @@ namespace _2HerenciaSimpleIES.Recursos
                         apellidos,
                         edad,
                         materia,
-                        Profesor.TipoFuncionario.DeCarrera,
+                        IntToTipoFuncionario(tipoProfesor), // Uso un método que convierte el int a TipoFuncionario
                         definitivo,
                         anioIngreso,
                         IntToMedic(tipoMedico),
@@ -294,6 +300,21 @@ namespace _2HerenciaSimpleIES.Recursos
                     return IEmpleadoPublico.TipoMedico.SeguridadSocial;
                 case 2:
                     return IEmpleadoPublico.TipoMedico.Muface;
+                default:
+                    return 0;
+            }
+        }
+
+        public static Profesor.TipoFuncionario IntToTipoFuncionario(int input)
+        {
+            switch (input)
+            {
+                case 1:
+                    return Profesor.TipoFuncionario.Interino;
+                case 2:
+                    return Profesor.TipoFuncionario.EnPracticas;
+                case 3:
+                    return Profesor.TipoFuncionario.DeCarrera;
                 default:
                     return 0;
             }
