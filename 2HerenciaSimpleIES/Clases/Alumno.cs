@@ -34,7 +34,7 @@ namespace _2HerenciaSimpleIES.Clases
 
         public override string GenerateEmail()
         {
-            return "a" + base.GenerateEmail() + $"{DateTime.Now.Year}" + "trass.com";
+            return "a" + base.GenerateEmail() + $"{DateTime.Now.ToString("yy")}" + "@trass.com";
         }
 
         public override string ToString()
