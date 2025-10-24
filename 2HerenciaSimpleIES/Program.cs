@@ -56,6 +56,9 @@ namespace _2HerenciaSimpleIES
                         Console.ReadKey();
                         break;
                     case 4:
+                        Console.WriteLine("----- MENÚ DE BÚSQUEDA -----");
+                        Console.WriteLine(ClaseAuxiliar.MostrarDatosFuncionario(listaPersonas));
+                        Console.ReadKey();
                         break;
                     case 5:
                         break;

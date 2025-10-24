@@ -276,6 +276,26 @@ namespace _2HerenciaSimpleIES.Recursos
             );
         }
 
+        public static string MostrarDatosFuncionario(List<Persona> lista)
+        {
+            Persona p = new(GenerarPersona());
+
+            foreach (Persona persona in lista)
+            {
+                if (persona.Equals(p))
+                {
+                    // Si la persona es un ProfesorFuncionario, devuelve sus datos
+                    // En caso contrario, devuelve un mensaje de error
+                    return persona is ProfesorFuncionario funcionario ?
+                        funcionario.DatosFuncionario() :
+                        "La persona introducida existe pero no es un empleado público.";
+                }
+            }
+
+            // Si no se encuentra la persona, devuelve un mensaje de error
+            return "La persona introducida no existe.";
+        }
+
         public static void PrintPersonasAge(List<Persona> personas, bool condicion)
         {
             foreach (Persona persona in personas)

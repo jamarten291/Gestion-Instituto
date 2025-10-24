@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _2HerenciaSimpleIES.Interfaces;
+using Microsoft.VisualBasic;
 
 namespace _2HerenciaSimpleIES.Clases
 {
@@ -57,28 +58,28 @@ namespace _2HerenciaSimpleIES.Clases
         public (int anios, int meses, int dias) 
             TiempoServicio()
         {
-            // Calcular el número de años
-            int anios = DateTime.Now.Year - fechaIngreso.Year;
-            int meses = DateTime.Now.Month - fechaIngreso.Month;
-            int dias = DateTime.Now.Day - fechaIngreso.Day;
-
-            // Ajustar si el día del mes del inicio es mayor que el día del mes final
-            if (dias < 0)
-            {
-                meses--;
-                dias += DateTime.DaysInMonth(
-                    DateTime.Now.Year, DateTime.Now.Month - 1
-                );
-            }
-
-            // Ajustar si el mes  es negativo
-            if (meses < 0)
-            {
-                anios--;
-                meses += 12;
-            }
+            int anios = (int) DateAndTime.DateDiff(
+                DateInterval.Year, fechaIngreso, DateTime.Now
+            );
+            int meses = (int) DateAndTime.DateDiff(
+                DateInterval.Month, fechaIngreso, DateTime.Now
+            // Se divide entre 12 y se saca el resto para obtener los meses restantes
+            ) % 12;
+            int dias = (int) DateAndTime.DateDiff(
+                // Se le agregan los años y meses de servicio a la fecha de ingreso para obtener
+                // los días restantes
+                DateInterval.Day, fechaIngreso.AddYears(anios).AddMonths(meses), DateTime.Now
+            );
 
             return (anios, meses, dias);
+        }
+
+        public string DatosFuncionario()
+        {
+            var (anios, meses, dias) = TiempoServicio();
+            return $"Tiempo de SERVICIO: {anios} años, {meses} meses, {dias} días\n" +
+                $"Nº de SEXENIOS: {GetSexenios()}\n" +
+                $"Nº de TRIENIOS: {GetTrienios()}";
         }
 
         public override string ToString()
