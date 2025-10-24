@@ -89,14 +89,8 @@ namespace _2HerenciaSimpleIES.Clases
                 Medico;
         }
 
-        public int GetSexenios()
-        {
-            return (DateTime.Now.Year - FechaIngreso.Year) / 6;
-        }
+        public int GetSexenios() => (DateTime.Now.Year - FechaIngreso.Year) / 6;
 
-        public int GetTrienios()
-        {
-            return (DateTime.Now.Year - FechaIngreso.Year) / 3;
-        }
+        public int GetTrienios() => (DateTime.Now.Year - FechaIngreso.Year) / 3;
     }
 }

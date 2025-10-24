@@ -60,6 +60,20 @@ namespace _2HerenciaSimpleIES.Recursos
         //    };
         //}
 
+        public static void MostrarMenu()
+        {
+            Console.Clear();
+            Console.Write("********** MENU **********\n" +
+                    "1. Añadir personas\n" +
+                    "2. Visualizar personas\n" +
+                    "3. Borrar una persona\n" +
+                    "4. Datos de un empleado público\n" +
+                    "5. Obtener el mayor de 2 personas\n" +
+                    "6. Salir\n" +
+                    "===========================\n" +
+                    "=> OPCION(1, 2, 3, 4, 5, 6): ");
+        }
+
         public static void ListarPersonas(List<Persona> lista, int padding)
         {
             PrintHeaderBasico(padding, true);
@@ -294,6 +308,25 @@ namespace _2HerenciaSimpleIES.Recursos
 
             // Si no se encuentra la persona, devuelve un mensaje de error
             return "La persona introducida no existe.";
+        }
+
+        public static string ObtenerMayor()
+        {
+            Persona p1 = new(GenerarPersona());
+            Console.WriteLine(); // Salto de línea para mejorar la legibilidad
+            Persona p2 = new(GenerarPersona());
+
+            if (p1 == p2)
+            {
+                return "PERSONAS DE IGUAL EDAD:\n" +
+                    $"{p1}\n{p2}";
+            } else
+            {
+                return "PERSONA MÁS MAYOR:\n" +
+                (
+                    p1 > p2 ? p1 : p2
+                );
+            }
         }
 
         public static void PrintPersonasAge(List<Persona> personas, bool condicion)

@@ -60,6 +60,8 @@ namespace _2HerenciaSimpleIES.Clases
             Nombre = datos.nombre;
             Apellidos = datos.apellido;
             Edad = datos.edad;
+            Email = GenerateEmail() + "@trass.com";
+            Padding = 20;
         }
 
         public Persona(string nombre, string apellido, uint edad, int padding)
@@ -124,5 +126,7 @@ namespace _2HerenciaSimpleIES.Clases
         public static bool operator > (Persona p1, Persona p2) => p1.Edad > p2.Edad;
         public static bool operator < (Persona p1, Persona p2) => p1.Edad < p2.Edad;
 
+        public static bool operator == (Persona p1, Persona p2) => p1.Edad == p2.Edad;
+        public static bool operator != (Persona p1, Persona p2) => p1.Edad != p2.Edad;
     }
 }
