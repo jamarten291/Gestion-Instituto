@@ -21,17 +21,7 @@ namespace _2HerenciaSimpleIES
             {
                 do
                 {
-                    Console.Clear();
-                    Console.Write(
-                    @"********** MENU **********
-1. Añadir personas
-2. Visualizar personas
-3. Borrar una persona
-4. Datos de un empleado público
-5. Obtener el mayor de 2 personas
-6. Salir
-===========================
-=> OPCION (1,2,3,4,5,6): ");
+                    ClaseAuxiliar.MostrarMenu();
                 }
                 while (!Int32.TryParse(Console.ReadLine(), out opt) ||
                     opt < 1 || opt > 6);
@@ -56,10 +46,17 @@ namespace _2HerenciaSimpleIES
                         Console.ReadKey();
                         break;
                     case 4:
+                        Console.WriteLine("----- MENÚ DE BÚSQUEDA -----");
+                        Console.WriteLine(ClaseAuxiliar.MostrarDatosFuncionario(listaPersonas));
+                        Console.ReadKey();
                         break;
                     case 5:
+                        Console.WriteLine("----- COMPARAR 2 PERSONAS -----");
+                        Console.WriteLine(ClaseAuxiliar.ObtenerMayor());
+                        Console.ReadKey();
                         break;
                     case 6:
+                        Console.WriteLine("¡Adiós!");
                         break;
                     default:
                         break;
