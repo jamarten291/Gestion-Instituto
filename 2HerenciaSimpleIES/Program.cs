@@ -36,17 +36,24 @@ namespace _2HerenciaSimpleIES
                 while (!Int32.TryParse(Console.ReadLine(), out opt) ||
                     opt < 1 || opt > 6);
 
+                Console.Clear();
+
                 switch (opt)
                 {
                     case 1:
+                        Console.WriteLine("----- INSERTAR UNA PERSONA A LA LISTA DE USUARIOS -----");
                         listaPersonas.Add(
-                            ClaseAuxiliar.GenerateSpecificPerson(PADDING)
+                            ClaseAuxiliar.GenerarPersonaEspecifica(PADDING)
                         );
                         break;
                     case 2:
                         ClaseAuxiliar.ListarPersonas(listaPersonas, PADDING);
                         break;
                     case 3:
+                        Console.WriteLine("----- MENÚ DE BORRADO -----");
+                        Console.WriteLine(ClaseAuxiliar.EliminarPersona(listaPersonas) ?
+                            "Persona borrada" : "Persona no encontrada");
+                        Console.ReadKey();
                         break;
                     case 4:
                         break;

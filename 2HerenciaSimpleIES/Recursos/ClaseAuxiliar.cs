@@ -71,6 +71,8 @@ namespace _2HerenciaSimpleIES.Recursos
                 }
             }
 
+            Console.WriteLine();
+
             PrintHeaderProfesor(padding);
             foreach (Persona p in lista)
             {
@@ -85,7 +87,7 @@ namespace _2HerenciaSimpleIES.Recursos
 
         public static void PrintHeaderBasico(int padding, bool alumno)
         {
-            Console.WriteLine();
+            Console.WriteLine(alumno ? "----- LISTADO DE ALUMNOS -----" : "----- LISTADO DE PROFESORES -----");
             Console.Write("NOMBRE".PadRight(padding) +
                 "APELLIDOS".PadRight(padding) +
                 "EMAIL".PadRight(padding) +
@@ -102,7 +104,7 @@ namespace _2HerenciaSimpleIES.Recursos
                 "S. MÉDICO\n");
         }
 
-        public static bool AlumnoExists(Persona p, List<Persona> personas)
+        public static bool AlumnoExiste(Persona p, List<Persona> personas)
         {
             // Devuelve true si cualquier persona que ya exista tiene la misma edad y el mismo email
             if (personas.Any(persona => persona.Email.Equals(p.Email) && persona.Edad == p.Edad))
@@ -115,7 +117,7 @@ namespace _2HerenciaSimpleIES.Recursos
         }
 
         // Tupla que devuelve el nombre, apellidos y la edad
-        public static (string nombre, string apellidos, uint edad) GeneratePerson(int padding)
+        public static (string nombre, string apellidos, uint edad) GenerarPersona(int padding = 20)
         {
             string nombre, apellidos;
             uint edad;
@@ -140,10 +142,17 @@ namespace _2HerenciaSimpleIES.Recursos
             return (nombre, apellidos, edad);
         }
 
-        public static Persona GenerateSpecificPerson(int padding)
+        public static bool EliminarPersona(List<Persona> personas)
+        {
+            // Busca y elimina una persona que coincida con la instancia de Persona generada en este método
+            // Esta instancia es creada pasándole una tupla con el nombre, apellido y edad de la persona que queremos borrar
+            return personas.SeekRemove(new Persona(GenerarPersona()));
+        }
+
+        public static Persona GenerarPersonaEspecifica(int padding)
         {
             int opt;
-            var (nombre, apellidos, edad) = GeneratePerson(padding);
+            var (nombre, apellidos, edad) = GenerarPersona(padding);
             do
             {
                 Console.Write($"Elige una opción:\n" +

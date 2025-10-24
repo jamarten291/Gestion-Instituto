@@ -54,6 +54,14 @@ namespace _2HerenciaSimpleIES.Clases
             set => PADDING = value;
         }
 
+        // Este constructor usa un tupla para inicializar los datos
+        public Persona((string nombre, string apellido, uint edad) datos)
+        {
+            Nombre = datos.nombre;
+            Apellidos = datos.apellido;
+            Edad = datos.edad;
+        }
+
         public Persona(string nombre, string apellido, uint edad, int padding)
         {
             Nombre = nombre;
@@ -103,7 +111,14 @@ namespace _2HerenciaSimpleIES.Clases
 
         public override bool Equals(object? obj)
         {
-            return base.Equals(obj);
+            Persona? persona = obj as Persona;
+            if (persona != null)
+            {
+                return Nombre == persona.Nombre &&
+                    Apellidos == persona.Apellidos &&
+                    Edad == persona.Edad;
+            }
+            return false;
         }
 
         public static bool operator > (Persona p1, Persona p2) => p1.Edad > p2.Edad;
