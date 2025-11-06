@@ -5,8 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IGraficasIES"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"
+        Height="450"
+        Width="700"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="ToolWindow">
     <Grid>
+        <StackPanel x:Name="stkPanel" Grid.ColumnSpan="2" Margin="0,0,0,8">
+            <Menu x:Name="menuPrincipal">
+                <MenuItem x:Name="menuArchivo" Header="_Archivo">
+                    <MenuItem Header="Abrir"
+                        Click="Abrir_Click"/>
+                    <Separator/>
+                    <MenuItem Header="Salir"
+                        Click="Salir_Click">
+                        <MenuItem.Icon>
+                            <Image x:Name="menuSalir"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </MenuItem>
+                <MenuItem x:Name="menuFuente" Header="_Fuente">
+                    <MenuItem Header="_Negrita" IsCheckable="True"
+                         Checked="Negrita_Checked"
+                         Unchecked="Negrita_Unchecked"/>
+                    <MenuItem Header="_Cursiva" IsCheckable="True"
+                         Checked="Cursiva_Checked"
+                         Unchecked="Cursiva_Unchecked"/>                </MenuItem>
+                <MenuItem x:Name="menuFiltros">
+                    
+                </MenuItem>
+                <MenuItem x:Name="menuAgrupacion">
 
+                </MenuItem>
+            </Menu>
+        </StackPanel>
+        <Grid x:Name="gridCentral"></Grid>
+        <Grid x:Name="gridBotones"></Grid>
     </Grid>
 </Window>
