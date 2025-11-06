@@ -31,10 +31,21 @@
                     <MenuItem Header="_Cursiva" IsCheckable="True"
                          Checked="Cursiva_Checked"
                          Unchecked="Cursiva_Unchecked"/>                </MenuItem>
-                <MenuItem x:Name="menuFiltros">
-                    
+                <MenuItem x:Name="menuFiltros" Header="_Filtros">
+                    <MenuItem Header="Edad mayor de 35 (nombre, apellidos, edad, materia)" IsCheckable="True"
+                     Checked="Negrita_Checked"
+                     Unchecked="Negrita_Unchecked"/>
+                    <MenuItem Header="Año ingreso igual o superior a 2010 (todo)" IsCheckable="True"
+                     Checked="Negrita_Checked"
+                     Unchecked="Negrita_Unchecked"/>
+                    <MenuItem Header="Año ingreso igual o superior a 2010 y Estado Civil es casado (nombre, apellidos, año y e.civil)" IsCheckable="True"
+                     Checked="Negrita_Checked"
+                     Unchecked="Negrita_Unchecked"/>
+                    <MenuItem Header="Estatura superior a 160 cm y ordenados por Estatura descendiente y Peso descendiente (nombre, apellidos, edad, estatura y peso)" IsCheckable="True"
+                     Checked="Negrita_Checked"
+                     Unchecked="Negrita_Unchecked"/>
                 </MenuItem>
-                <MenuItem x:Name="menuAgrupacion">
+                <MenuItem x:Name="menuAgrupacion" Header="_Agrupación">
 
                 </MenuItem>
             </Menu>
