@@ -341,6 +341,7 @@ namespace _2HerenciaSimpleIES.Recursos
             }
         }
 
+        // Prueba
         public static void PrintPersonasInstance(List<Persona> personas, bool mostrarAlumnos)
         {
             foreach (Persona persona in personas)
