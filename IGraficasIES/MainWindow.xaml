@@ -87,8 +87,8 @@
 
             <!-- Fila 1 -->
             <!-- Labels -->
-            <Label x:Name="lblNombre" Grid.Column="0" Grid.Row="1" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Nombre"/>
-            <Label x:Name="lblApellidos" Grid.Column="0" Grid.Row="1" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Apellidos"/>
+            <Label x:Name="lblNombre" Grid.Column="0" Grid.Row="1" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Nombre" Margin="11,0,0,0"/>
+            <Label x:Name="lblApellidos" Grid.Column="0" Grid.Row="1" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Apellidos" Margin="11,0,0,0"/>
             <Label x:Name="lblEmail" Grid.Column="3" Grid.Row="1" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Email"/>
 
             <!-- TextBoxes -->
@@ -106,14 +106,14 @@
 
             <!-- Fila 3 -->
             <!-- Labels -->
-            <Label x:Name="lblEdad" Grid.Column="0" Grid.Row="3" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Edad"/>
+            <Label x:Name="lblEdad" Grid.Column="0" Grid.Row="3" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Edad" Margin="11,0,0,0"/>
             <Label x:Name="lbnAnioIngreso" Grid.Column="2" Grid.Row="3" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Año ingreso"/>
-            <Label x:Name="lbnMedico" Grid.Column="5" Grid.Row="3" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Content="S. Médico"/>
+            <Label x:Name="lbnMedico" Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="3" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Content="S. Médico"/>
             <Label x:Name="lblFuncionario" Grid.Column="4" Grid.Row="3" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Tipo Funcionario"/>
 
             <!-- TextBox y TextBlock -->
             <TextBox x:Name="txtAnioIngreso" Grid.Column="3" Grid.Row="3" Width="100" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <TextBlock x:Name="txtMedico" Grid.Column="6" Grid.Row="3" Width="80" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <ListBox x:Name="listMedico" Grid.Column="6" Grid.Row="3" Width="75" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Visible"/>
 
             <!-- ComboBox -->
             <ComboBox x:Name="comboEdad" Grid.Column="1" Grid.Row="3" Width="50" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -148,7 +148,7 @@
                     <Image x:Name="imgPrimero"></Image>
                 </DockPanel>
             </Button>
-            <Button x:Name="btnAnterior" Click="BtnAnterior_Click" HorizontalAlignment="Left" Height="40" VerticalAlignment="Top" Width="40" Grid.Column="2" Grid.Row="4" Margin="0,11,0,0">
+            <Button x:Name="btnAnterior" Click="BtnAnterior_Click" HorizontalAlignment="Right" Height="40" VerticalAlignment="Top" Width="40" Grid.Column="2" Grid.Row="4" Margin="0,11,0,0">
                 <DockPanel>
                     <Image x:Name="imgAnterior"></Image>
                 </DockPanel>
