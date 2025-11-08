@@ -19,6 +19,16 @@ namespace IGraficasIES
         public MainWindow()
         {
             InitializeComponent();
+            InitializeElements();
+        }
+
+        private void InitializeElements()
+        {
+            // Llenar ComboBox de Edades válidas
+            for (int i = 22; i <= 70; i++)
+            {
+                comboEdad.Items.Add(i.ToString());
+            }
         }
 
         // Archivo

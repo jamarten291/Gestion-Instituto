@@ -113,7 +113,10 @@
 
             <!-- TextBox y TextBlock -->
             <TextBox x:Name="txtAnioIngreso" Grid.Column="3" Grid.Row="3" Width="100" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-            <ListBox x:Name="listMedico" Grid.Column="6" Grid.Row="3" Width="75" Height="40" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Visible"/>
+            <ListBox x:Name="listMedico" Grid.Column="6" Grid.Row="3" Width="75" Height="45" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Visible">
+                <ListBoxItem Content="S. Social"/>
+                <ListBoxItem Content="MUFACE"/>
+            </ListBox>
 
             <!-- ComboBox -->
             <ComboBox x:Name="comboEdad" Grid.Column="1" Grid.Row="3" Width="50" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top"/>
