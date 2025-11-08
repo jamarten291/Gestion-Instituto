@@ -5,20 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IGraficasIES"
         mc:Ignorable="d"
-        Title="MainWindow"
-        Height="450"
-        Width="700"
-        WindowStartupLocation="CenterScreen"
-        WindowStyle="ToolWindow">
+        Title="MainWindow" Height="450" Width="800">
     <Grid>
         <StackPanel x:Name="stkPanel" Grid.ColumnSpan="2" Margin="0,0,0,8">
             <Menu x:Name="menuPrincipal">
                 <MenuItem x:Name="menuArchivo" Header="_Archivo">
                     <MenuItem Header="Abrir"
-                        Click="Abrir_Click"/>
+                Click="Abrir_Click"/>
                     <Separator/>
                     <MenuItem Header="Salir"
-                        Click="Salir_Click">
+                Click="Salir_Click">
                         <MenuItem.Icon>
                             <Image x:Name="menuSalir"/>
                         </MenuItem.Icon>
@@ -26,27 +22,43 @@
                 </MenuItem>
                 <MenuItem x:Name="menuFuente" Header="_Fuente">
                     <MenuItem Header="_Negrita" IsCheckable="True"
-                         Checked="Negrita_Checked"
-                         Unchecked="Negrita_Unchecked"/>
+                 Checked="Negrita_Checked"
+                 Unchecked="Negrita_Unchecked"/>
                     <MenuItem Header="_Cursiva" IsCheckable="True"
-                         Checked="Cursiva_Checked"
-                         Unchecked="Cursiva_Unchecked"/>                </MenuItem>
+                 Checked="Cursiva_Checked"
+                 Unchecked="Cursiva_Unchecked"/>
+                </MenuItem>
                 <MenuItem x:Name="menuFiltros" Header="_Filtros">
                     <MenuItem Header="Edad mayor de 35 (nombre, apellidos, edad, materia)" IsCheckable="True"
-                     Checked="Negrita_Checked"
-                     Unchecked="Negrita_Unchecked"/>
+             Checked="Filtro1_Checked"
+             Unchecked="Filtro1_Unchecked"/>
                     <MenuItem Header="Año ingreso igual o superior a 2010 (todo)" IsCheckable="True"
-                     Checked="Negrita_Checked"
-                     Unchecked="Negrita_Unchecked"/>
+             Checked="Filtro2_Checked"
+             Unchecked="Filtro2_Unchecked"/>
                     <MenuItem Header="Año ingreso igual o superior a 2010 y Estado Civil es casado (nombre, apellidos, año y e.civil)" IsCheckable="True"
-                     Checked="Negrita_Checked"
-                     Unchecked="Negrita_Unchecked"/>
+             Checked="Filtro3_Checked"
+             Unchecked="Filtro3_Unchecked"/>
                     <MenuItem Header="Estatura superior a 160 cm y ordenados por Estatura descendiente y Peso descendiente (nombre, apellidos, edad, estatura y peso)" IsCheckable="True"
-                     Checked="Negrita_Checked"
-                     Unchecked="Negrita_Unchecked"/>
+             Checked="Filtro4_Checked"
+             Unchecked="Filtro4_Unchecked"/>
                 </MenuItem>
                 <MenuItem x:Name="menuAgrupacion" Header="_Agrupación">
-
+                    <MenuItem Header="Agrupar por E.Civil y mostrar nombre, apellidos, edad, peso y estatura"
+              IsCheckable="True"
+              Checked="Agrup1_Checked"
+              Unchecked="Agrup1_Unchecked"/>
+                    <MenuItem Header="Agrupar por E.Civil y mostrar cuantos hay en cada grupo"
+              IsCheckable="True"
+              Checked="Agrup2_Checked"
+              Unchecked="Agrup2_Unchecked"/>
+                    <MenuItem Header="Agrupar por Rangos de Edad, orden descendente por Edad y mostrar nombre, apellidos, email"
+              IsCheckable="True"
+              Checked="Agrup3_Checked"
+              Unchecked="Agrup3_Unchecked"/>
+                    <MenuItem Header="Agrupar por Seguro Médico, cuando la edad es igual o superior a 40, orden peso y apellidos (nombre, apellidos, seguro peso)"
+              IsCheckable="True"
+              Checked="Agrup4_Checked"
+              Unchecked="Agrup4_Unchecked"/>
                 </MenuItem>
             </Menu>
         </StackPanel>

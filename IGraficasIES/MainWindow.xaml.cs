@@ -20,5 +20,97 @@ namespace IGraficasIES
         {
             InitializeComponent();
         }
+
+        // Archivo
+        private void Abrir_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Salir_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        // Fuente
+        private void Negrita_Checked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Negrita_Unchecked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Cursiva_Checked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Cursiva_Unchecked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        // Filtros
+        private void Filtro1_Checked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Filtro1_Unchecked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Filtro2_Checked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Filtro2_Unchecked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Filtro3_Checked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Filtro3_Unchecked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Filtro4_Checked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Filtro4_Unchecked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        // Agrupación
+        private void Agrup1_Checked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Agrup1_Unchecked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Agrup2_Checked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Agrup2_Unchecked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Agrup3_Checked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Agrup3_Unchecked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Agrup4_Checked(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void Agrup4_Unchecked(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }
