@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:IGraficasIES"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"
+        Height="450"
+        Width="700" 
+        WindowStartupLocation="CenterScreen"   
+        WindowStyle="ToolWindow">
     <Grid>
         <StackPanel x:Name="stkPanel" Grid.ColumnSpan="2" Margin="0,0,0,8">
             <Menu x:Name="menuPrincipal">
@@ -62,7 +66,43 @@
                 </MenuItem>
             </Menu>
         </StackPanel>
-        <Grid x:Name="gridCentral"></Grid>
+        <Grid x:Name="gridCentral">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="15*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="15*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="91*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="87*"/>
+                <RowDefinition Height="107*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Fila 1 -->
+            <!-- Labels -->
+            <Label x:Name="lblNombre" Grid.Column="0" Grid.Row="1" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Nombre"/>
+            <Label x:Name="lblApellidos" Grid.Column="0" Grid.Row="1" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Apellidos"/>
+            <Label x:Name="lblEmail" Grid.Column="3" Grid.Row="1" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Email"/>
+
+            <!-- TextBoxes -->
+            <TextBox x:Name="txtNombre" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Width="100" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBox x:Name="txtApellidos" Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" Width="200" Height="25" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+            <TextBox x:Name="txtEmail" Grid.Column="4" Grid.ColumnSpan="2" Grid.Row="1" Width="150" Height="25" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            <!-- CheckBoxes -->
+            <CheckBox x:Name="cmbDestinoDefinitivo" Grid.Column="4" Grid.Row="1" Width="120" Height="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Destino definitivo"/>
+
+            <!-- Fila 3 -->
+            <Label x:Name="lblEdad" Grid.Column="0" Grid.Row="3" FontSize="14" HorizontalAlignment="Left" VerticalAlignment="Top" Content="Edad"/>
+            
+        </Grid>
         <Grid x:Name="gridBotones"></Grid>
     </Grid>
 </Window>
