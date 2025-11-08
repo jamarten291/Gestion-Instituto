@@ -112,5 +112,35 @@ namespace IGraficasIES
         private void Agrup4_Unchecked(object sender, RoutedEventArgs e)
         {
         }
+
+        private void Definitivo_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Definitivo_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnPrimero_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnAnterior_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnSiguiente_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnUltimo_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
