@@ -138,7 +138,7 @@ namespace IGraficasIES
 
         }
 
-        private void btnUltimo_Click(object sender, RoutedEventArgs e)
+        private void BtnUltimo_Click(object sender, RoutedEventArgs e)
         {
 
         }
