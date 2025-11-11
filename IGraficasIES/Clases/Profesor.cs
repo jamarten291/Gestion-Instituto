@@ -32,6 +32,14 @@ namespace _2HerenciaSimpleIES.Clases
             Email = GenerateEmail();
         }
 
+        protected Profesor()
+        {
+        }
+
+        protected Profesor(string nombre, string apellido, uint edad, string rutaFoto) : 
+            base(nombre, apellido, edad, rutaFoto)
+        {
+        }
 
         public override string GenerateEmail()
         {

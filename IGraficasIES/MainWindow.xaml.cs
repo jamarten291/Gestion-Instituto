@@ -31,6 +31,11 @@ namespace IGraficasIES
             }
         }
 
+        private void UpdateInterface()
+        {
+
+        }
+
         // Archivo
         private void Abrir_Click(object sender, RoutedEventArgs e)
         {
@@ -135,22 +140,22 @@ namespace IGraficasIES
 
         private void BtnPrimero_Click(object sender, RoutedEventArgs e)
         {
-
+            UpdateInterface();
         }
 
         private void BtnAnterior_Click(object sender, RoutedEventArgs e)
         {
-
+            UpdateInterface();
         }
 
         private void BtnSiguiente_Click(object sender, RoutedEventArgs e)
         {
-
+            UpdateInterface();
         }
 
         private void BtnUltimo_Click(object sender, RoutedEventArgs e)
         {
-
+            UpdateInterface();
         }
     }
 }

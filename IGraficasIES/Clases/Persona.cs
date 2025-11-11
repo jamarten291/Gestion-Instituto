@@ -12,6 +12,7 @@ namespace _2HerenciaSimpleIES.Clases
         private uint edad;
         private string email;
         private bool mayorEdad;
+        private string rutaFoto;
 
         public Persona()
         {
@@ -48,6 +49,12 @@ namespace _2HerenciaSimpleIES.Clases
             private set => mayorEdad = value;
         }
 
+        public string RutaFoto
+        {
+            get => rutaFoto;
+            set => rutaFoto = value;
+        }
+
         public int Padding
         {
             get => PADDING; 
@@ -62,6 +69,15 @@ namespace _2HerenciaSimpleIES.Clases
             Edad = datos.edad;
             Email = GenerateEmail() + "@trass.com";
             Padding = 20;
+        }
+
+        public Persona(string nombre, string apellido, uint edad, string rutaFoto)
+        {
+            Nombre = nombre;
+            Apellidos = apellido;
+            Edad = edad;
+            Email = GenerateEmail() + "@trass.com";
+            RutaFoto = rutaFoto;
         }
 
         public Persona(string nombre, string apellido, uint edad, int padding)

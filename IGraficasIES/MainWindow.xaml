@@ -102,7 +102,9 @@
                       Unchecked="Definitivo_Unchecked"/>
             
             <!-- Imágen -->
-            <Image x:Name="imgFoto" Grid.Column="6" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Height="Auto" Width="Auto" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,20,10,20"/>
+            <Image x:Name="imgFoto" Grid.Column="6" Grid.Row="1"
+HorizontalAlignment="Left" VerticalAlignment="Center" Height="Auto"
+Width="Auto" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,20,10,20"/>
 
             <!-- Fila 3 -->
             <!-- Labels -->

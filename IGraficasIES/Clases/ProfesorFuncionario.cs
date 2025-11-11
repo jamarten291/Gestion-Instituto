@@ -32,6 +32,28 @@ namespace _2HerenciaSimpleIES.Clases
             Medico = tipoMedico;
         }
 
+        public ProfesorFuncionario()
+        {
+        }
+
+        public ProfesorFuncionario(string nombre, string apellido, uint edad, string rutaFoto) : 
+            base(nombre, apellido, edad, rutaFoto)
+        {
+        }
+
+        public ProfesorFuncionario(string nombre, string apellido, uint edad, string rutaFoto, string materia,
+            TipoFuncionario tipoProfesor, bool definitivo, uint yearIngreso, IEmpleadoPublico.TipoMedico tipoMedico) :
+            base(nombre, apellido, edad, rutaFoto)
+        {
+            Materia = materia;
+            TipoProfesor = tipoProfesor;
+            YearIngreso = yearIngreso;
+            DestinoDefinitivo = definitivo;
+            // 1 de septiembre del año de ingreso
+            FechaIngreso = new DateTime((int)yearIngreso, 9, 1);
+            Medico = tipoMedico;
+        }
+
         public uint YearIngreso
         {
             get { return yearIngreso; }
