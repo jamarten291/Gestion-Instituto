@@ -16,6 +16,8 @@ namespace IGraficasIES.Clases
             Viudo
         }
 
+        //Test
+
         private EstadoCivil _estadoCivil;
         private string _email;
         private int _peso;
