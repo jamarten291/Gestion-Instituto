@@ -100,7 +100,7 @@
             <CheckBox x:Name="checkDestinoDefinitivo" Grid.Column="4" Grid.Row="1" Width="120" Height="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Destino definitivo"
                       Checked="Definitivo_Checked"
                       Unchecked="Definitivo_Unchecked"/>
-            
+
             <!-- Imágen -->
             <Image x:Name="imgFoto" Grid.Column="6" Grid.Row="1"
 HorizontalAlignment="Left" VerticalAlignment="Center" Height="Auto"
