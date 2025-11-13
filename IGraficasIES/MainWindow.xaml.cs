@@ -41,7 +41,7 @@ namespace IGraficasIES
             // Llenar ComboBox de Edades válidas
             for (int i = 22; i <= 70; i++)
             {
-                comboEdad.Items.Add(i.ToString());
+                comboEdad.Items.Add(i);
             }
         }
 
@@ -55,7 +55,7 @@ namespace IGraficasIES
             }
         }
 
-        private ImageSource RutaImagen(Profesor p)
+        private static ImageSource RutaImagen(Profesor p)
         {
             string miruta = rutaFija;
             return (new ImageSourceConverter()).ConvertFromString(miruta + p.RutaFoto) as ImageSource;
@@ -70,7 +70,7 @@ namespace IGraficasIES
                 // Campos comunes de Persona
                 txtNombre.Text = profesor.Nombre;
                 txtApellidos.Text = profesor.Apellidos;
-                comboEdad.SelectedItem = profesor.Edad;
+                comboEdad.SelectedValue = Convert.ToInt32(profesor.Edad);
                 txtEmail.Text = profesor.Email;
 
                 // Checkboxes de tipo de profesor
@@ -302,6 +302,7 @@ namespace IGraficasIES
         {
             return b.Name switch
             {
+                // Habilitar o deshabilitar botones según la posición actual en la lista
                 "btnAnterior" or "btnPrimero" => personaIndex != 0,
                 "btnSiguiente" or "btnUltimo" => personaIndex != (listaPersonas.Count - 1),
                 _ => false
