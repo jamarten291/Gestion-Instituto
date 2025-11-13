@@ -71,12 +71,12 @@ namespace _2HerenciaSimpleIES.Clases
             Padding = 20;
         }
 
-        public Persona(string nombre, string apellido, uint edad, string rutaFoto)
+        public Persona(string nombre, string apellido, uint edad, string email, string rutaFoto)
         {
             Nombre = nombre;
             Apellidos = apellido;
             Edad = edad;
-            Email = GenerateEmail();
+            Email = email;
             RutaFoto = rutaFoto;
         }
 

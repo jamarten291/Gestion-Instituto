@@ -36,8 +36,8 @@ namespace _2HerenciaSimpleIES.Clases
         {
         }
 
-        protected Profesor(string nombre, string apellido, uint edad, string rutaFoto) : 
-            base(nombre, apellido, edad, rutaFoto)
+        protected Profesor(string nombre, string apellido, uint edad, string email, string rutaFoto) : 
+            base(nombre, apellido, edad, email, rutaFoto)
         {
         }
 

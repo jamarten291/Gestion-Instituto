@@ -124,6 +124,7 @@ namespace IGraficasIES
                             datos[0], // Nombre
                             datos[1], // Apellidos
                             uint.Parse(datos[2]), // Edad
+                            datos[3], // Email
                             datos[4], // Materia
                             ClaseWPFAuxiliar.StringToFuncionario(datos[5]), // TipoProfesor
                             uint.Parse(datos[6]), // YearIngreso

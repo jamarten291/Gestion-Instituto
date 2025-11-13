@@ -59,10 +59,24 @@ namespace IGraficasIES.Clases
 
         public List<ProfesorExtendido> GetProfesE()
         {
-            return new List<ProfesorExtendido>
-            { 
-                // TODO meter datos de profesores
-            };
+            return
+            [
+                new ProfesorExtendido
+                {
+                },
+                new ProfesorExtendido
+                {
+                },
+                new ProfesorExtendido
+                {
+                },
+                new ProfesorExtendido
+                {
+                },
+                new ProfesorExtendido
+                {
+                },
+            ];
         }
     }
 }

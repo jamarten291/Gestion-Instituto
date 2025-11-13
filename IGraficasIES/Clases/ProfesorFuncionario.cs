@@ -36,14 +36,14 @@ namespace _2HerenciaSimpleIES.Clases
         {
         }
 
-        public ProfesorFuncionario(string nombre, string apellido, uint edad, string rutaFoto) : 
-            base(nombre, apellido, edad, rutaFoto)
+        public ProfesorFuncionario(string nombre, string apellido, uint edad, string email, string rutaFoto) : 
+            base(nombre, apellido, edad, email, rutaFoto)
         {
         }
 
-        public ProfesorFuncionario(string nombre, string apellido, uint edad, string materia,
+        public ProfesorFuncionario(string nombre, string apellido, uint edad, string email, string materia,
             TipoFuncionario tipoProfesor, uint yearIngreso, bool definitivo, IEmpleadoPublico.TipoMedico tipoMedico, string rutaFoto) :
-            base(nombre, apellido, edad, rutaFoto)
+            base(nombre, apellido, edad, email, rutaFoto)
         {
             Materia = materia;
             TipoProfesor = tipoProfesor;
