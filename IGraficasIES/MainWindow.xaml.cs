@@ -43,7 +43,7 @@ namespace IGraficasIES
 
         private void InitializeImageButtons()
         {
-            Image[] images = { imgPrimero, imgAnterior, imgSiguiente, imgUltimo };
+            Image[] images = [imgPrimero, imgAnterior, imgSiguiente, imgUltimo];
 
             foreach (Image image in images)
             {
@@ -77,7 +77,16 @@ namespace IGraficasIES
                 { //Obtengo una colección de líneas (en cada una están los datos
                   //de un profesor), luego las iré recorriendo con un foreach
                     var lineas = File.ReadLines(openFileDialog.FileName);
-
+                    listaPersonas =
+                    [
+                        new ProfesorFuncionario
+                        (
+                            "Juan",
+                            "Perez Rios",
+                            43,
+                            "image.png"
+                        )
+                    ];
                 }
                 catch (Exception)
                 {
