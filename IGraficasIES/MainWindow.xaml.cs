@@ -109,39 +109,48 @@ namespace IGraficasIES
                 { //Obtengo una colección de líneas (en cada una están los datos
                   //de un profesor), luego las iré recorriendo con un foreach
                     var lineas = File.ReadLines(openFileDialog.FileName);
+                    int registrosInvalidos = 0;
                     foreach (var line in lineas) 
                     {
                         //Aquí parto la línea por los ';' y obtengo un array de strings
                         string[] datos = line.Split(';');
 
+                        // Compruebo que el número de datos es correcto
                         if (datos.Length != 10)
                         {
-                            throw new FormatException("Número de campos incorrecto en uno de los registros del fichero");
+                            registrosInvalidos++;
+                        } else
+                        {
+                            //Creo un nuevo profesor con los datos obtenidos
+                            ProfesorFuncionario p = new
+                            (
+                                datos[0], // Nombre
+                                datos[1], // Apellidos
+                                uint.Parse(datos[2]), // Edad
+                                datos[3], // Email
+                                datos[4], // Materia
+                                ClaseWPFAuxiliar.StringToFuncionario(datos[5]), // TipoProfesor
+                                uint.Parse(datos[6]), // YearIngreso
+                                datos[7] == "true", // Definitivo
+                                ClaseWPFAuxiliar.StringToTipoMedico(datos[8]), // TipoMedico
+                                datos[9] == "" ? "empty.jpg" : datos[9] // RutaFoto
+                            );
+                            //Añado el profesor a la lista
+                            listaPersonas.Add(p);
+                            gridBotones.IsEnabled = true;
+                            UpdateInterface();
                         }
-                        //Creo un nuevo profesor con los datos obtenidos
-                        ProfesorFuncionario p = new ProfesorFuncionario
-                        (
-                            datos[0], // Nombre
-                            datos[1], // Apellidos
-                            uint.Parse(datos[2]), // Edad
-                            datos[3], // Email
-                            datos[4], // Materia
-                            ClaseWPFAuxiliar.StringToFuncionario(datos[5]), // TipoProfesor
-                            uint.Parse(datos[6]), // YearIngreso
-                            datos[7] == "true", // Definitivo
-                            ClaseWPFAuxiliar.StringToTipoMedico(datos[8]), // TipoMedico
-                            datos[9] == "" ? "empty.jpg" : datos[9] // RutaFoto
-                        );
-                        //Añado el profesor a la lista
-                        listaPersonas.Add(p);
-                        gridBotones.IsEnabled = true;
-                        UpdateInterface();
+                    }
+
+                    if (registrosInvalidos > 0)
+                    {
+                        throw new FormatException($"Se han encontrado {registrosInvalidos} registros con formato no válido");
                     }
                 }
                 catch (ArgumentException ex)
                 {
                     MessageBox.Show(
-                        "Algunos campos del fichero tienen un tipo de funcionario no válido\n" +
+                        "Algunos campos del fichero tienen un tipo de dato no válido\n" +
                         ex.Message, 
                         "INFO", 
                         MessageBoxButton.OK, 
@@ -156,18 +165,17 @@ namespace IGraficasIES
                         ex.Message, 
                         "ERROR", 
                         MessageBoxButton.OK, 
-                        MessageBoxImage.Warning
+                        MessageBoxImage.Error
                     );
                 }
                 catch (FormatException ex)
                 {
                     MessageBox.Show(
-                        "Lo sentimos, algo ha ido mal al leer el fichero\n" +
-                        "Ha habido un error al formatear los datos en el programa\n" +
+                        "No se han podido leer todos los registros del fichero\n" +
                         ex.Message, 
                         "ERROR", 
                         MessageBoxButton.OK, 
-                        MessageBoxImage.Error
+                        MessageBoxImage.Warning
                     );
                 }
             }
