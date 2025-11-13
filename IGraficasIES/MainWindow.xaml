@@ -100,9 +100,11 @@
             <CheckBox x:Name="checkDestinoDefinitivo" Grid.Column="4" Grid.Row="1" Width="120" Height="25" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Destino definitivo"
                       Checked="Definitivo_Checked"
                       Unchecked="Definitivo_Unchecked"/>
-            
+
             <!-- Imágen -->
-            <Image x:Name="imgFoto" Grid.Column="6" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Height="Auto" Width="Auto" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,20,10,20"/>
+            <Image x:Name="imgFoto" Grid.Column="6" Grid.Row="1"
+HorizontalAlignment="Left" VerticalAlignment="Center" Height="Auto"
+Width="Auto" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,20,10,20"/>
 
             <!-- Fila 3 -->
             <!-- Labels -->
@@ -114,8 +116,8 @@
             <!-- TextBox y TextBlock -->
             <TextBox x:Name="txtAnioIngreso" Grid.Column="3" Grid.Row="3" Width="100" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <ListBox x:Name="listMedico" Grid.Column="6" Grid.Row="3" Width="75" Height="45" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Visible">
-                <ListBoxItem Content="S. Social"/>
-                <ListBoxItem Content="MUFACE"/>
+                <ListBoxItem x:Name="ss" Content="S. Social"/>
+                <ListBoxItem x:Name="muface" Content="MUFACE"/>
             </ListBox>
 
             <!-- ComboBox -->

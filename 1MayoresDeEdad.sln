@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36511.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2HerenciaSimpleIES", "2HerenciaSimpleIES\2HerenciaSimpleIES.csproj", "{EEF778D6-2D2C-4D2B-B76B-E06184F53D90}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IGraficasIES", "IGraficasIES\IGraficasIES.csproj", "{3A98D316-186F-42B7-AFAE-6530318AFCFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2HerenciaSimpleIES", "2HerenciaSimpleIES\2HerenciaSimpleIES.csproj", "{ADCB82E5-C1D7-9AD8-B84E-DD458C0F142D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EEF778D6-2D2C-4D2B-B76B-E06184F53D90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EEF778D6-2D2C-4D2B-B76B-E06184F53D90}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EEF778D6-2D2C-4D2B-B76B-E06184F53D90}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EEF778D6-2D2C-4D2B-B76B-E06184F53D90}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3A98D316-186F-42B7-AFAE-6530318AFCFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3A98D316-186F-42B7-AFAE-6530318AFCFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A98D316-186F-42B7-AFAE-6530318AFCFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A98D316-186F-42B7-AFAE-6530318AFCFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADCB82E5-C1D7-9AD8-B84E-DD458C0F142D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADCB82E5-C1D7-9AD8-B84E-DD458C0F142D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADCB82E5-C1D7-9AD8-B84E-DD458C0F142D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADCB82E5-C1D7-9AD8-B84E-DD458C0F142D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
