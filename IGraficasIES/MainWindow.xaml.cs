@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using _2HerenciaSimpleIES.Interfaces;
 
 namespace IGraficasIES
 {
@@ -69,7 +70,7 @@ namespace IGraficasIES
                 // Campos comunes de Persona
                 txtNombre.Text = profesor.Nombre;
                 txtApellidos.Text = profesor.Apellidos;
-                comboEdad.SelectedItem = Convert.ToInt32(profesor.Edad);
+                comboEdad.SelectedItem = profesor.Edad;
                 txtEmail.Text = profesor.Email;
 
                 // Checkboxes de tipo de profesor
@@ -79,8 +80,8 @@ namespace IGraficasIES
                 // Campos específicos de ProfesorFuncionario
                 checkDestinoDefinitivo.IsChecked = profesor.DestinoDefinitivo;
                 txtAnioIngreso.Text = profesor.YearIngreso.ToString();
-                listMedico.SelectedItem = profesor.Medico.ToString().ToLower() == "ss" ?
-                    "S. Social" : "MUFACE";
+                listMedico.SelectedItem = profesor.Medico == IEmpleadoPublico.TipoMedico.SeguridadSocial ?
+                    ss : muface;
 
                 // Imagen
                 imgFoto.Source = RutaImagen(profesor);
@@ -112,6 +113,11 @@ namespace IGraficasIES
                     {
                         //Aquí parto la línea por los ';' y obtengo un array de strings
                         string[] datos = line.Split(';');
+
+                        if (datos.Length != 10)
+                        {
+                            throw new FormatException("Número de campos incorrecto en uno de los registros del fichero");
+                        }
                         //Creo un nuevo profesor con los datos obtenidos
                         ProfesorFuncionario p = new ProfesorFuncionario
                         (
@@ -121,30 +127,47 @@ namespace IGraficasIES
                             datos[4], // Materia
                             ClaseWPFAuxiliar.StringToFuncionario(datos[5]), // TipoProfesor
                             uint.Parse(datos[6]), // YearIngreso
-                            datos[7] == "true" ? true : false, // Definitivo
+                            datos[7] == "true", // Definitivo
                             ClaseWPFAuxiliar.StringToTipoMedico(datos[8]), // TipoMedico
-                            datos[9] == null ? "" : datos[9] // RutaFoto
+                            datos[9] == "" ? "empty.jpg" : datos[9] // RutaFoto
                         );
                         //Añado el profesor a la lista
                         listaPersonas.Add(p);
-                        gridCentral.IsEnabled = true;
                         gridBotones.IsEnabled = true;
                         UpdateInterface();
-                        btnAnterior.IsEnabled = false;
                     }
                 }
-                catch (Exception ex)
+                catch (ArgumentException ex)
+                {
+                    MessageBox.Show(
+                        "Algunos campos del fichero tienen un tipo de funcionario no válido\n" +
+                        ex.Message, 
+                        "INFO", 
+                        MessageBoxButton.OK, 
+                        MessageBoxImage.Information
+                    );
+                }
+                catch (IOException ex)
                 {
                     MessageBox.Show(
                         "Lo sentimos, algo ha ido mal al leer el fichero\n" +
-                        "Quizás el fichero no existe o no tiene el formato adecuado\n" +
+                        "Compruebe que el fichero existe y que su formato es correcto\n" +
+                        ex.Message, 
+                        "ERROR", 
+                        MessageBoxButton.OK, 
+                        MessageBoxImage.Warning
+                    );
+                }
+                catch (FormatException ex)
+                {
+                    MessageBox.Show(
+                        "Lo sentimos, algo ha ido mal al leer el fichero\n" +
+                        "Ha habido un error al formatear los datos en el programa\n" +
                         ex.Message, 
                         "ERROR", 
                         MessageBoxButton.OK, 
                         MessageBoxImage.Error
                     );
-                    //gridCentral.IsEnabled = false;
-                    //gridBotones.IsEnabled = false;
                 }
             }
         } 

@@ -76,7 +76,7 @@ namespace _2HerenciaSimpleIES.Clases
             Nombre = nombre;
             Apellidos = apellido;
             Edad = edad;
-            Email = GenerateEmail() + "@trass.com";
+            Email = GenerateEmail();
             RutaFoto = rutaFoto;
         }
 

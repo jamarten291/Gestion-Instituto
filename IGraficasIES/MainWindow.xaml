@@ -116,8 +116,8 @@ Width="Auto" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="0,20,10,20"/>
             <!-- TextBox y TextBlock -->
             <TextBox x:Name="txtAnioIngreso" Grid.Column="3" Grid.Row="3" Width="100" Height="25" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <ListBox x:Name="listMedico" Grid.Column="6" Grid.Row="3" Width="75" Height="45" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Visible">
-                <ListBoxItem Content="S. Social"/>
-                <ListBoxItem Content="MUFACE"/>
+                <ListBoxItem x:Name="ss" Content="S. Social"/>
+                <ListBoxItem x:Name="muface" Content="MUFACE"/>
             </ListBox>
 
             <!-- ComboBox -->

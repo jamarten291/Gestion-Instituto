@@ -16,8 +16,7 @@ namespace IGraficasIES.Recursos
         {
             return tipo.ToLower().Trim() switch
             {
-                "interino" => Profesor.TipoFuncionario.Interino,
-                "en practicas" => Profesor.TipoFuncionario.EnPracticas,
+                "en practicas" or "en prácticas" => Profesor.TipoFuncionario.EnPracticas,
                 "de carrera" => Profesor.TipoFuncionario.DeCarrera,
                 _ => throw new ArgumentException("Tipo de funcionario no válido")
             };
