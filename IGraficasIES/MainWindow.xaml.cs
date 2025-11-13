@@ -17,10 +17,12 @@ namespace IGraficasIES
     /// </summary>
     public partial class MainWindow : Window
     {
+        const string rutaFija = "..\\..\\..\\Imagenes\\";
         public MainWindow()
         {
             InitializeComponent();
             InitializeElements();
+            InitializeImageButtons();
         }
 
         private void InitializeElements()
@@ -30,18 +32,22 @@ namespace IGraficasIES
             {
                 comboEdad.Items.Add(i.ToString());
             }
-
-            imgAnterior.Source = RutaImagen(null, "imgAnterior.png");
-            imgSiguiente.Source = RutaImagen(null, "imgSiguiente.png");
-            imgPrimero.Source = RutaImagen(null, "imgPrimero.png");
-            imgUltimo.Source = RutaImagen(null, "imgUltimo.png");
         }
 
-        private ImageSource RutaImagen(Profesor p = null, string img = "")
+        private void InitializeImageButtons()
         {
-            const string rutaFija = "..\\..\\..\\Imagenes\\";
-            string miruta = rutaFija + (p is null ? img : p.RutaFoto);
-            return (new ImageSourceConverter()).ConvertFromString(miruta) as ImageSource;
+            Image[] images = { imgPrimero, imgAnterior, imgSiguiente, imgUltimo };
+
+            foreach (Image image in images)
+            {
+                image.Source = (new ImageSourceConverter()).ConvertFromString(rutaFija + image.Name + ".png") as ImageSource;
+            }
+        }
+
+        private ImageSource RutaImagen(Profesor p)
+        {
+            string miruta = rutaFija;
+            return (new ImageSourceConverter()).ConvertFromString(miruta + p.RutaFoto) as ImageSource;
         }
 
         private void UpdateInterface()
