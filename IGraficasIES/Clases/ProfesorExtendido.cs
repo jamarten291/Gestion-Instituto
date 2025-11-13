@@ -16,8 +16,6 @@ namespace IGraficasIES.Clases
             Viudo
         }
 
-        //Test
-
         private EstadoCivil _estadoCivil;
         private string _email;
         private int _peso;
@@ -31,21 +29,13 @@ namespace IGraficasIES.Clases
             }
             set 
             {
-                switch (value.ToString().ToLower())
+                _estadoCivil = value.ToString().ToLower() switch
                 {
-                    case "casado":
-                        _estadoCivil = EstadoCivil.Casado;
-                        break;
-                    case "divorciado":
-                        _estadoCivil = EstadoCivil.Divorciado;
-                        break;
-                    case "viudo":
-                        _estadoCivil = EstadoCivil.Viudo;
-                        break;
-                    default:
-                        _estadoCivil = EstadoCivil.Soltero;
-                        break;
-                }
+                    "casado" => EstadoCivil.Casado,
+                    "divorciado" => EstadoCivil.Divorciado,
+                    "viudo" => EstadoCivil.Viudo,
+                    _ => EstadoCivil.Soltero,
+                };
             }
         }
 
