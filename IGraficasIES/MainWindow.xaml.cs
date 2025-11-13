@@ -230,7 +230,7 @@ namespace IGraficasIES
             {
                 "btnAnterior" or "btnPrimero" => personaIndex != 0,
                 "btnSiguiente" or "btnUltimo" => personaIndex != (listaPersonas.Count - 1),
-                _ => false,
+                _ => false
             };
         }
     }
