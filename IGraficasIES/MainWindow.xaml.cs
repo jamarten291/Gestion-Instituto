@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using _2HerenciaSimpleIES.Clases;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -29,6 +30,18 @@ namespace IGraficasIES
             {
                 comboEdad.Items.Add(i.ToString());
             }
+
+            imgAnterior.Source = RutaImagen(null, "imgAnterior.png");
+            imgSiguiente.Source = RutaImagen(null, "imgSiguiente.png");
+            imgPrimero.Source = RutaImagen(null, "imgPrimero.png");
+            imgUltimo.Source = RutaImagen(null, "imgUltimo.png");
+        }
+
+        private ImageSource RutaImagen(Profesor p = null, string img = "")
+        {
+            const string rutaFija = "..\\..\\..\\Imagenes\\";
+            string miruta = rutaFija + (p is null ? img : p.RutaFoto);
+            return (new ImageSourceConverter()).ConvertFromString(miruta) as ImageSource;
         }
 
         private void UpdateInterface()
