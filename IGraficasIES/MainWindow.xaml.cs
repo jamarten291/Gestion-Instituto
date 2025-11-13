@@ -1,4 +1,7 @@
 ﻿using _2HerenciaSimpleIES.Clases;
+using _2HerenciaSimpleIES.Recursos;
+using IGraficasIES.Recursos;
+using IGraficasIES.Clases;
 using Microsoft.Win32;
 using System.IO;
 using System.Text;
@@ -20,7 +23,7 @@ namespace IGraficasIES
     public partial class MainWindow : Window
     {
         private const string rutaFija = "..\\..\\..\\Imagenes\\";
-        private List<Persona> listaPersonas;
+        private List<Persona> listaPersonas = new List<Persona>();
         private int personaIndex = 0;
 
         public MainWindow()
@@ -60,6 +63,34 @@ namespace IGraficasIES
         private void UpdateInterface()
         {
             Persona persona = listaPersonas[personaIndex];
+
+            if (persona is ProfesorFuncionario profesor)
+            {
+                // Campos comunes de Persona
+                txtNombre.Text = profesor.Nombre;
+                txtApellidos.Text = profesor.Apellidos;
+                comboEdad.SelectedItem = Convert.ToInt32(profesor.Edad);
+                txtEmail.Text = profesor.Email;
+
+                // Checkboxes de tipo de profesor
+                rdbCarrera.IsChecked = profesor.TipoProfesor == Profesor.TipoFuncionario.DeCarrera;
+                rdbPracticas.IsChecked = profesor.TipoProfesor == Profesor.TipoFuncionario.EnPracticas;
+
+                // Campos específicos de ProfesorFuncionario
+                checkDestinoDefinitivo.IsChecked = profesor.DestinoDefinitivo;
+                txtAnioIngreso.Text = profesor.YearIngreso.ToString();
+                listMedico.SelectedItem = profesor.Medico.ToString().ToLower() == "ss" ?
+                    "S. Social" : "MUFACE";
+
+                // Imagen
+                imgFoto.Source = RutaImagen(profesor);
+            }
+
+            // Actualizar estado de los botones de navegación
+            btnPrimero.IsEnabled = ComprobarBotonActivo(btnPrimero);
+            btnAnterior.IsEnabled = ComprobarBotonActivo(btnAnterior);
+            btnSiguiente.IsEnabled = ComprobarBotonActivo(btnSiguiente);
+            btnUltimo.IsEnabled = ComprobarBotonActivo(btnUltimo);
         }
 
         // Archivo
@@ -77,31 +108,46 @@ namespace IGraficasIES
                 { //Obtengo una colección de líneas (en cada una están los datos
                   //de un profesor), luego las iré recorriendo con un foreach
                     var lineas = File.ReadLines(openFileDialog.FileName);
-                    listaPersonas =
-                    [
-                        new ProfesorFuncionario
+                    foreach (var line in lineas) 
+                    {
+                        //Aquí parto la línea por los ';' y obtengo un array de strings
+                        string[] datos = line.Split(';');
+                        //Creo un nuevo profesor con los datos obtenidos
+                        ProfesorFuncionario p = new ProfesorFuncionario
                         (
-                            "Juan",
-                            "Perez Rios",
-                            43,
-                            "image.png"
-                        )
-                    ];
+                            datos[0], // Nombre
+                            datos[1], // Apellidos
+                            uint.Parse(datos[2]), // Edad
+                            datos[4], // Materia
+                            ClaseWPFAuxiliar.StringToFuncionario(datos[5]), // TipoProfesor
+                            uint.Parse(datos[6]), // YearIngreso
+                            datos[7] == "true" ? true : false, // Definitivo
+                            ClaseWPFAuxiliar.StringToTipoMedico(datos[8]), // TipoMedico
+                            datos[9] == null ? "" : datos[9] // RutaFoto
+                        );
+                        //Añado el profesor a la lista
+                        listaPersonas.Add(p);
+                        gridCentral.IsEnabled = true;
+                        gridBotones.IsEnabled = true;
+                        UpdateInterface();
+                        btnAnterior.IsEnabled = false;
+                    }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     MessageBox.Show(
                         "Lo sentimos, algo ha ido mal al leer el fichero\n" +
-                        "Quizás el fichero no existe o no tiene el formato adecuado", 
+                        "Quizás el fichero no existe o no tiene el formato adecuado\n" +
+                        ex.Message, 
                         "ERROR", 
                         MessageBoxButton.OK, 
                         MessageBoxImage.Error
                     );
+                    //gridCentral.IsEnabled = false;
+                    //gridBotones.IsEnabled = false;
                 }
             }
-                
-
-            } 
+        } 
 
         private void Salir_Click(object sender, RoutedEventArgs e)
         {
@@ -207,28 +253,24 @@ namespace IGraficasIES
 
         private void BtnPrimero_Click(object sender, RoutedEventArgs e)
         {
-            btnPrimero.IsEnabled = ComprobarBotonActivo((Button)sender);
             personaIndex = 0;
             UpdateInterface();
         }
 
         private void BtnAnterior_Click(object sender, RoutedEventArgs e)
         {
-            btnAnterior.IsEnabled = ComprobarBotonActivo((Button)sender);
             personaIndex--;
             UpdateInterface();
         }
 
         private void BtnSiguiente_Click(object sender, RoutedEventArgs e)
         {
-            btnSiguiente.IsEnabled = ComprobarBotonActivo((Button)sender);
             personaIndex++;
             UpdateInterface();
         }
 
         private void BtnUltimo_Click(object sender, RoutedEventArgs e)
         {
-            btnUltimo.IsEnabled = ComprobarBotonActivo((Button) sender);
             personaIndex = listaPersonas.Count - 1;
             UpdateInterface();
         }
