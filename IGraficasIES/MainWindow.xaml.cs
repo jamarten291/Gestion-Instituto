@@ -23,7 +23,6 @@ namespace IGraficasIES
     /// </summary>
     public partial class MainWindow : Window
     {
-        private const string rutaFija = "..\\..\\..\\Imagenes\\";
         private List<Persona> listaPersonas = new List<Persona>();
         private int personaIndex = 0;
 
@@ -51,14 +50,10 @@ namespace IGraficasIES
 
             foreach (Image image in images)
             {
-                image.Source = (new ImageSourceConverter()).ConvertFromString(rutaFija + image.Name + ".png") as ImageSource;
+                image.Source = (new ImageSourceConverter())
+                    .ConvertFromString(ClaseWPFAuxiliar.RUTA_IMG + image.Name + ".png") 
+                    as ImageSource;
             }
-        }
-
-        private static ImageSource RutaImagen(Profesor p)
-        {
-            string miruta = rutaFija;
-            return (new ImageSourceConverter()).ConvertFromString(miruta + p.RutaFoto) as ImageSource;
         }
 
         private void UpdateInterface()
@@ -84,7 +79,7 @@ namespace IGraficasIES
                     ss : muface;
 
                 // Imagen
-                imgFoto.Source = RutaImagen(profesor);
+                imgFoto.Source = ClaseWPFAuxiliar.RutaImagen(profesor);
             }
 
             // Actualizar estado de los botones de navegación

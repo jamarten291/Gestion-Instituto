@@ -5,12 +5,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace IGraficasIES.Recursos
 {
     public class ClaseWPFAuxiliar
     {
-        public static string RutaImagenes = "..\\..\\..\\Imagenes\\";
+        public const string RUTA_IMG = "..\\..\\..\\Imagenes\\";
+
+        public static ImageSource RutaImagen(Profesor p)
+        {
+            return (new ImageSourceConverter()).ConvertFromString(RUTA_IMG + p.RutaFoto) as ImageSource;
+        }
 
         public static Profesor.TipoFuncionario StringToFuncionario(string tipo)
         {
@@ -31,5 +37,7 @@ namespace IGraficasIES.Recursos
                 _ => throw new ArgumentException("Tipo de médico no válido")
             };
         }
+
+
     }
 }
