@@ -402,7 +402,8 @@ namespace IGraficasIES
                     let rangosEdad = persona.Edad < 40 ? "Joven" :
                                      persona.Edad < 60 ? "Maduro" : 
                                      "Por jubilarse"
-                    group new 
+                    orderby persona.Edad descending
+                    group new
                     {
                         persona.Nombre,
                         persona.Apellidos,
@@ -435,15 +436,16 @@ namespace IGraficasIES
             var listaFiltrada =
                 from persona in listaPersonas
                 join profe in listaProfesoresExt on persona.Email equals profe.Email
+                where persona.Edad >= 40
+                orderby profe.Peso, persona.Apellidos
                 group new
                 {
                     persona.Nombre,
                     persona.Apellidos,
-                    persona.Edad,
-                    profe.Peso,
-                    profe.Estatura
+                    ((ProfesorFuncionario) persona).Medico,
+                    profe.Peso
                 }
-                by profe.Estado
+                by ((ProfesorFuncionario)persona).Medico
                 into personasAgrupadas
                 select new
                 {
@@ -451,7 +453,7 @@ namespace IGraficasIES
                     Valores = personasAgrupadas
                 };
 
-            string queryResult = ClaseWPFAuxiliar.ConsultaFormateada(listaFiltrada);
+            string queryResult = ClaseWPFAuxiliar.ConsultaGroupByFormateada(listaFiltrada);
 
             MessageBox.Show(
                 queryResult,
