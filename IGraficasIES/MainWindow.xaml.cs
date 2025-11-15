@@ -25,7 +25,7 @@ namespace IGraficasIES
     public partial class MainWindow : Window
     {
         private readonly List<Persona> listaPersonas = [];
-        private List<ProfesorExtendido> listaProfesoresExt = 
+        private readonly List<ProfesorExtendido> listaProfesoresExt = 
             ProfesorExtendido.GetProfesE();
         private int personaIndex = 0;
 
@@ -291,7 +291,22 @@ namespace IGraficasIES
         private void Filtro4_Checked(object sender, RoutedEventArgs e)
         {
             var listaFiltrada = listaPersonas
-                .Where(x => ((ProfesorFuncionario)x).YearIngreso >= 2010)
+                .Join(
+                    listaProfesoresExt,
+                    persona => persona.Email,
+                    profesorExt => profesorExt.Email,
+                    (persona, profesorExt) => new
+                    {
+                        persona.Nombre,
+                        persona.Apellidos,
+                        persona.Edad,
+                        profesorExt.Estatura,
+                        profesorExt.Peso
+                    }
+                )
+                .Where(x => x.Estatura > 160)
+                .OrderByDescending(x => x.Estatura)
+                .OrderByDescending(x => x.Peso)
                 .Select(x => x);
 
             // Aquí iría el código para actualizar la interfaz con la lista filtrada
@@ -312,6 +327,33 @@ namespace IGraficasIES
         // Agrupación
         private void Agrup1_Checked(object sender, RoutedEventArgs e)
         {
+            var listaFiltrada =
+                from persona in listaPersonas
+                join profe in listaProfesoresExt on persona.Email equals profe.Email
+                group new
+                {
+                    persona.Nombre,
+                    persona.Apellidos,
+                    persona.Edad,
+                    profe.Peso,
+                    profe.Estatura
+                }
+                by profe.Estado
+                into personasAgrupadas
+                select new
+                {
+                    Estado = personasAgrupadas.Key,
+                    Valores = personasAgrupadas
+                };
+
+            string queryResult = ClaseWPFAuxiliar.ConsultaGroupByFormateada(listaFiltrada);
+
+            MessageBox.Show(
+                queryResult,
+                "Resultado del filtro",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information
+            );
         }
 
         private void Agrup1_Unchecked(object sender, RoutedEventArgs e)
@@ -320,6 +362,33 @@ namespace IGraficasIES
 
         private void Agrup2_Checked(object sender, RoutedEventArgs e)
         {
+            var listaFiltrada =
+                from persona in listaPersonas
+                join profe in listaProfesoresExt on persona.Email equals profe.Email
+                group new
+                {
+                    persona.Nombre,
+                    persona.Apellidos,
+                    persona.Edad,
+                    profe.Peso,
+                    profe.Estatura
+                }
+                by profe.Estado
+                into personasAgrupadas
+                select new
+                {
+                    Estado = personasAgrupadas.Key,
+                    Valores = personasAgrupadas.Count()
+                };
+
+            string queryResult = ClaseWPFAuxiliar.ConsultaFormateada(listaFiltrada);
+
+            MessageBox.Show(
+                queryResult,
+                "Resultado del filtro",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information
+            );
         }
 
         private void Agrup2_Unchecked(object sender, RoutedEventArgs e)
@@ -328,6 +397,33 @@ namespace IGraficasIES
 
         private void Agrup3_Checked(object sender, RoutedEventArgs e)
         {
+            var listaFiltrada =
+                from persona in listaPersonas
+                join profe in listaProfesoresExt on persona.Email equals profe.Email
+                group new
+                {
+                    persona.Nombre,
+                    persona.Apellidos,
+                    persona.Edad,
+                    profe.Peso,
+                    profe.Estatura
+                }
+                by profe.Estado
+                into personasAgrupadas
+                select new
+                {
+                    Estado = personasAgrupadas.Key,
+                    Valores = personasAgrupadas
+                };
+
+            string queryResult = ClaseWPFAuxiliar.ConsultaFormateada(listaFiltrada);
+
+            MessageBox.Show(
+                queryResult,
+                "Resultado del filtro",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information
+            );
         }
 
         private void Agrup3_Unchecked(object sender, RoutedEventArgs e)
@@ -336,6 +432,33 @@ namespace IGraficasIES
 
         private void Agrup4_Checked(object sender, RoutedEventArgs e)
         {
+            var listaFiltrada =
+                from persona in listaPersonas
+                join profe in listaProfesoresExt on persona.Email equals profe.Email
+                group new
+                {
+                    persona.Nombre,
+                    persona.Apellidos,
+                    persona.Edad,
+                    profe.Peso,
+                    profe.Estatura
+                }
+                by profe.Estado
+                into personasAgrupadas
+                select new
+                {
+                    Estado = personasAgrupadas.Key,
+                    Valores = personasAgrupadas
+                };
+
+            string queryResult = ClaseWPFAuxiliar.ConsultaFormateada(listaFiltrada);
+
+            MessageBox.Show(
+                queryResult,
+                "Resultado del filtro",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information
+            );
         }
 
         private void Agrup4_Unchecked(object sender, RoutedEventArgs e)
