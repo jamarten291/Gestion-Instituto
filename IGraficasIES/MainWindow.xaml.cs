@@ -50,10 +50,10 @@ namespace IGraficasIES
 
             foreach (Image image in images)
             {
-                image.Source = (new ImageSourceConverter())
-                    .ConvertFromString(ClaseWPFAuxiliar.RUTA_IMG + image.Name + ".png") 
-                    as ImageSource;
+                image.Source = ClaseWPFAuxiliar.RutaImagen(image.Name + ".png");
             }
+
+            menuSalir.Source = ClaseWPFAuxiliar.RutaImagen(menuSalir.Name + ".jpg");
         }
 
         private void UpdateInterface()

@@ -18,6 +18,11 @@ namespace IGraficasIES.Recursos
             return (new ImageSourceConverter()).ConvertFromString(RUTA_IMG + p.RutaFoto) as ImageSource;
         }
 
+        public static ImageSource RutaImagen(string rutaFoto)
+        {
+            return (new ImageSourceConverter()).ConvertFromString(RUTA_IMG + rutaFoto) as ImageSource;
+        }
+
         public static Profesor.TipoFuncionario StringToFuncionario(string tipo)
         {
             return tipo.ToLower().Trim() switch
