@@ -69,17 +69,18 @@ namespace IGraficasIES.Recursos
 
             foreach (var grupo in listaAgrupada)
             {
+                // tipoGrupo es un objeto dinámico que contiene las propiedades del grupo (Estado y Valores)
                 var tipoGrupo = grupo.GetType();
 
-                // Obtener propiedad Estado
-                var propEstado = tipoGrupo.GetProperty("Estado");
+                // Obtener propiedad Key (estado)
+                var propEstado = tipoGrupo.GetProperty("Key");
                 var estadoVal = propEstado?.GetValue(grupo)?.ToString() ?? "(null)";
 
                 sb.AppendLine($"Estado: {estadoVal}");
                 sb.AppendLine(new string('-', 30));
 
-                // Obtener propiedad Valores (enumerable)
-                var propValores = tipoGrupo.GetProperty("Valores");
+                // Obtener propiedad Values (enumerable)
+                var propValores = tipoGrupo.GetProperty("Values");
                 if (propValores == null)
                 {
                     sb.AppendLine("Valores: (propiedad no encontrada)");
@@ -87,21 +88,22 @@ namespace IGraficasIES.Recursos
                     continue;
                 }
 
-                System.Collections.IEnumerable? valoresObj = propValores.GetValue(grupo) as System.Collections.IEnumerable;
-                if (valoresObj == null)
+                // Obtener los valores del grupo en forma de enumerable para poder listarlos
+                var valoresGrupo = propValores.GetValue(grupo) as System.Collections.IEnumerable;
+                if (valoresGrupo == null)
                 {
                     sb.AppendLine("Valores: (no enumerable)");
                     sb.AppendLine();
                     continue;
                 }
 
-                foreach (var elemento in valoresObj)
+                foreach (var elemento in valoresGrupo)
                 {
                     var propsElemento = elemento.GetType().GetProperties();
-                    foreach (var p in propsElemento)
+                    foreach (var prop in propsElemento)
                     {
-                        var val = p.GetValue(elemento);
-                        sb.AppendLine($"{p.Name}: {val}");
+                        var val = prop.GetValue(elemento);
+                        sb.AppendLine($"{prop.Name}: {val}");
                     }
                     sb.AppendLine();
                 }

@@ -342,8 +342,8 @@ namespace IGraficasIES
                 into personasAgrupadas
                 select new
                 {
-                    Estado = personasAgrupadas.Key,
-                    Valores = personasAgrupadas
+                    personasAgrupadas.Key,
+                    Values = personasAgrupadas
                 };
 
             string queryResult = ClaseWPFAuxiliar.ConsultaGroupByFormateada(listaFiltrada);
@@ -377,8 +377,8 @@ namespace IGraficasIES
                 into personasAgrupadas
                 select new
                 {
-                    Estado = personasAgrupadas.Key,
-                    Valores = personasAgrupadas.Count()
+                    personasAgrupadas.Key,
+                    Values = personasAgrupadas
                 };
 
             string queryResult = ClaseWPFAuxiliar.ConsultaFormateada(listaFiltrada);
@@ -413,8 +413,8 @@ namespace IGraficasIES
                     into personasAgrupadas
                     select new
                     {
-                        Estado = personasAgrupadas.Key,
-                        Valores = personasAgrupadas
+                        personasAgrupadas.Key,
+                        Values = personasAgrupadas
                     };
 
             string queryResult = ClaseWPFAuxiliar.ConsultaGroupByFormateada(listaFiltrada);
@@ -449,8 +449,8 @@ namespace IGraficasIES
                 into personasAgrupadas
                 select new
                 {
-                    Estado = personasAgrupadas.Key,
-                    Valores = personasAgrupadas
+                    personasAgrupadas.Key,
+                    Values = personasAgrupadas
                 };
 
             string queryResult = ClaseWPFAuxiliar.ConsultaGroupByFormateada(listaFiltrada);
