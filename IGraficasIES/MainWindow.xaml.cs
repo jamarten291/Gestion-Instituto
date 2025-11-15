@@ -23,7 +23,8 @@ namespace IGraficasIES
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<Persona> listaPersonas = new List<Persona>();
+        private List<Persona> listaPersonas = [];
+        private List<Persona> listaPersonasAux = [];
         private int personaIndex = 0;
 
         public MainWindow()
@@ -33,6 +34,8 @@ namespace IGraficasIES
             InitializeImageButtons();
             gridCentral.IsEnabled = false;
             gridBotones.IsEnabled = false;
+            menuFiltros.IsEnabled = false;
+            menuAgrupacion.IsEnabled = false;
         }
 
         private void InitializeElements()
@@ -82,11 +85,13 @@ namespace IGraficasIES
                 imgFoto.Source = ClaseWPFAuxiliar.RutaImagen(profesor);
             }
 
-            // Actualizar estado de los botones de navegación
-            btnPrimero.IsEnabled = ComprobarBotonActivo(btnPrimero);
-            btnAnterior.IsEnabled = ComprobarBotonActivo(btnAnterior);
-            btnSiguiente.IsEnabled = ComprobarBotonActivo(btnSiguiente);
-            btnUltimo.IsEnabled = ComprobarBotonActivo(btnUltimo);
+            Button[] botonesNavegacion = [btnPrimero, btnAnterior, btnSiguiente, btnUltimo];
+
+            // Actualizar estado de los botones de navegación recorriendo el array
+            foreach (Button boton in botonesNavegacion)
+            {
+                boton.IsEnabled = ComprobarBotonActivo(boton);
+            }
         }
 
         // Archivo
@@ -133,6 +138,8 @@ namespace IGraficasIES
                             //Añado el profesor a la lista
                             listaPersonas.Add(p);
                             gridBotones.IsEnabled = true;
+                            menuFiltros.IsEnabled = true;
+                            menuAgrupacion.IsEnabled = true;
                             UpdateInterface();
                         }
                     }
@@ -205,6 +212,7 @@ namespace IGraficasIES
         // Filtros
         private void Filtro1_Checked(object sender, RoutedEventArgs e)
         {
+
         }
 
         private void Filtro1_Unchecked(object sender, RoutedEventArgs e)
