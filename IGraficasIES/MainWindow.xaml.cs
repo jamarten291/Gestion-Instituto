@@ -398,25 +398,25 @@ namespace IGraficasIES
         private void Agrup3_Checked(object sender, RoutedEventArgs e)
         {
             var listaFiltrada =
-                from persona in listaPersonas
-                join profe in listaProfesoresExt on persona.Email equals profe.Email
-                group new
-                {
-                    persona.Nombre,
-                    persona.Apellidos,
-                    persona.Edad,
-                    profe.Peso,
-                    profe.Estatura
-                }
-                by profe.Estado
-                into personasAgrupadas
-                select new
-                {
-                    Estado = personasAgrupadas.Key,
-                    Valores = personasAgrupadas
-                };
+                    from persona in listaPersonas
+                    let rangosEdad = persona.Edad < 40 ? "Joven" :
+                                     persona.Edad < 60 ? "Maduro" : 
+                                     "Por jubilarse"
+                    group new 
+                    {
+                        persona.Nombre,
+                        persona.Apellidos,
+                        persona.Edad
+                    }
+                    by rangosEdad
+                    into personasAgrupadas
+                    select new
+                    {
+                        Estado = personasAgrupadas.Key,
+                        Valores = personasAgrupadas
+                    };
 
-            string queryResult = ClaseWPFAuxiliar.ConsultaFormateada(listaFiltrada);
+            string queryResult = ClaseWPFAuxiliar.ConsultaGroupByFormateada(listaFiltrada);
 
             MessageBox.Show(
                 queryResult,
