@@ -235,6 +235,19 @@ namespace IGraficasIES
 
         private void Filtro2_Checked(object sender, RoutedEventArgs e)
         {
+            var listaFiltrada = listaPersonas
+                .Where(x => ((ProfesorFuncionario) x).YearIngreso >= 2010)
+                .Select(x => x);
+
+            // Aquí iría el código para actualizar la interfaz con la lista filtrada
+            string queryResult = ClaseWPFAuxiliar.ConsultaFormateada(listaFiltrada);
+
+            MessageBox.Show(
+                queryResult,
+                "Resultado del filtro",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information
+            );
         }
 
         private void Filtro2_Unchecked(object sender, RoutedEventArgs e)
@@ -243,6 +256,32 @@ namespace IGraficasIES
 
         private void Filtro3_Checked(object sender, RoutedEventArgs e)
         {
+            var listaFiltrada = listaPersonas
+                .Join(
+                    listaProfesoresExt,
+                    persona => persona.Email,
+                    profesorExt => profesorExt.Email,
+                    (persona, profesorExt) => new 
+                    { 
+                        persona.Nombre,
+                        persona.Apellidos,
+                        ((ProfesorFuncionario) persona).YearIngreso,
+                        profesorExt.Estado
+                    }
+                )
+                .Where(x => x.YearIngreso >= 2010)
+                .Where(x => x.Estado == ProfesorExtendido.EstadoCivil.Casado)
+                .Select(x => x);
+
+            // Aquí iría el código para actualizar la interfaz con la lista filtrada
+            string queryResult = ClaseWPFAuxiliar.ConsultaFormateada(listaFiltrada);
+
+            MessageBox.Show(
+                queryResult,
+                "Resultado del filtro",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information
+            );
         }
 
         private void Filtro3_Unchecked(object sender, RoutedEventArgs e)
@@ -251,6 +290,19 @@ namespace IGraficasIES
 
         private void Filtro4_Checked(object sender, RoutedEventArgs e)
         {
+            var listaFiltrada = listaPersonas
+                .Where(x => ((ProfesorFuncionario)x).YearIngreso >= 2010)
+                .Select(x => x);
+
+            // Aquí iría el código para actualizar la interfaz con la lista filtrada
+            string queryResult = ClaseWPFAuxiliar.ConsultaFormateada(listaFiltrada);
+
+            MessageBox.Show(
+                queryResult,
+                "Resultado del filtro",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information
+            );
         }
 
         private void Filtro4_Unchecked(object sender, RoutedEventArgs e)

@@ -23,20 +23,8 @@ namespace IGraficasIES.Clases
 
         public EstadoCivil Estado
         {
-            get 
-            {
-                return _estadoCivil;
-            }
-            set 
-            {
-                _estadoCivil = value.ToString().ToLower() switch
-                {
-                    "casado" => EstadoCivil.Casado,
-                    "divorciado" => EstadoCivil.Divorciado,
-                    "viudo" => EstadoCivil.Viudo,
-                    _ => EstadoCivil.Soltero,
-                };
-            }
+            get => _estadoCivil;
+            set => _estadoCivil = value;
         }
 
         public string Email
