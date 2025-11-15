@@ -59,6 +59,7 @@ namespace IGraficasIES.Clases
 
         public static List<ProfesorExtendido> GetProfesE()
         {
+            // Lista de correos electrónicos de ejemplo que se enlazan con los datos del .txt
             List<string> emails =
             [
                 "juan.perez@gmail.com",
@@ -74,11 +75,12 @@ namespace IGraficasIES.Clases
             ];
 
             Random rand = new();
-            EstadoCivil[] estados = Enum.GetValues<EstadoCivil>();
+            EstadoCivil[] estados = Enum.GetValues<EstadoCivil>(); // Obtener todos los valores del enum
             List<ProfesorExtendido> lista = [];
 
             foreach (var email in emails)
             {
+                // Crear un nuevo ProfesorExtendido con datos aleatorios y agregarlo a la lista
                 lista.Add(new ProfesorExtendido
                 {
                     Email = email,

@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using _2HerenciaSimpleIES.Interfaces;
+using System.Linq;
 
 namespace IGraficasIES
 {
@@ -23,8 +24,9 @@ namespace IGraficasIES
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<Persona> listaPersonas = [];
-        private List<Persona> listaPersonasAux = [];
+        private readonly List<Persona> listaPersonas = [];
+        private List<ProfesorExtendido> listaProfesoresExt = 
+            ProfesorExtendido.GetProfesE();
         private int personaIndex = 0;
 
         public MainWindow()
@@ -212,7 +214,19 @@ namespace IGraficasIES
         // Filtros
         private void Filtro1_Checked(object sender, RoutedEventArgs e)
         {
+            var listaFiltrada = listaPersonas
+                .Where(x => x.Edad > 35)
+                .Select(x => new {x.Nombre, x.Apellidos, x.Edad, ((Profesor) x).Materia});
 
+            // Aquí iría el código para actualizar la interfaz con la lista filtrada
+            string queryResult = ClaseWPFAuxiliar.ConsultaFormateada(listaFiltrada);
+
+            MessageBox.Show(
+                queryResult, 
+                "Resultado del filtro", 
+                MessageBoxButton.OK, 
+                MessageBoxImage.Information
+            );
         }
 
         private void Filtro1_Unchecked(object sender, RoutedEventArgs e)

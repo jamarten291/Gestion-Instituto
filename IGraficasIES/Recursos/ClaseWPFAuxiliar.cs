@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 
 namespace IGraficasIES.Recursos
@@ -43,6 +44,22 @@ namespace IGraficasIES.Recursos
             };
         }
 
+        public static string ConsultaFormateada<T>(IEnumerable<T> lista)
+        {
+            StringBuilder sb = new();
 
+            foreach (var persona in lista)
+            {
+                System.Reflection.PropertyInfo[] props = persona.GetType().GetProperties();
+
+                foreach (var prop in props)
+                {
+                    sb.Append($"{prop.Name}: {prop.GetValue(persona)?.ToString()}\n");
+                }
+                sb.Append("\n----------------------\n");
+            }
+
+            return sb.ToString();
+        }
     }
 }
