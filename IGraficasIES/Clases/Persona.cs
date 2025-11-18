@@ -5,13 +5,10 @@ namespace _2HerenciaSimpleIES.Clases
 {
     public class Persona
     {
-        private int PADDING;
-        
         private string nombre;
         private string apellidos;
         private uint edad;
         private string email;
-        private bool mayorEdad;
         private string rutaFoto;
 
         public Persona()
@@ -31,11 +28,7 @@ namespace _2HerenciaSimpleIES.Clases
         public uint Edad 
         { 
             get => edad;
-            set
-            {
-                edad = value >= 0 && value <= 120 ? value : 0;
-                MayorEdad = edad > 18;
-            }
+            set => edad = value >= 0 && value <= 120 ? value : 0;
         }
         public string Email 
         { 
@@ -43,32 +36,10 @@ namespace _2HerenciaSimpleIES.Clases
             set => email = value;
         }
 
-        public bool MayorEdad
-        {
-            get => mayorEdad;
-            private set => mayorEdad = value;
-        }
-
         public string RutaFoto
         {
             get => rutaFoto;
             set => rutaFoto = value;
-        }
-
-        public int Padding
-        {
-            get => PADDING; 
-            set => PADDING = value;
-        }
-
-        // Este constructor usa un tupla para inicializar los datos
-        public Persona((string nombre, string apellido, uint edad) datos)
-        {
-            Nombre = datos.nombre;
-            Apellidos = datos.apellido;
-            Edad = datos.edad;
-            Email = GenerateEmail() + "@trass.com";
-            Padding = 20;
         }
 
         public Persona(string nombre, string apellido, uint edad, string email, string rutaFoto)
@@ -78,14 +49,6 @@ namespace _2HerenciaSimpleIES.Clases
             Edad = edad;
             Email = email;
             RutaFoto = rutaFoto;
-        }
-
-        public Persona(string nombre, string apellido, uint edad, int padding)
-        {
-            Nombre = nombre;
-            Apellidos = apellido;
-            Edad = edad;
-            Padding = padding;
         }
 
         public static String CapitalizeAndClean(string s)
@@ -121,10 +84,7 @@ namespace _2HerenciaSimpleIES.Clases
 
         public override string ToString()
         {
-            return Nombre.PadRight(PADDING) + 
-                Apellidos.PadRight(PADDING) + 
-                Email.PadRight(PADDING) + 
-                $"{Edad}".PadRight(PADDING);
+            return $"Nombre: {Nombre} {Apellidos}, Edad: {Edad}, Email: {Email}";
         }
 
         public override bool Equals(object? obj)
