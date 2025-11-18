@@ -15,21 +15,28 @@ namespace _2HerenciaSimpleIES.Clases
         private DateTime fechaIngreso;
         private IEmpleadoPublico.TipoMedico tipoMedico;
 
-        public ProfesorFuncionario(string nombre, string apellidos, uint edad, int padding) :
-            base(nombre, apellidos, edad, padding) {
-            FechaIngreso = new DateTime(1970, 9, 1);
+        public uint YearIngreso
+        {
+            get { return yearIngreso; }
+            set { yearIngreso = value > 0 ? value : 0; }
         }
 
-        public ProfesorFuncionario(string nombre, string apellidos, uint edad, string materia, 
-            TipoFuncionario tipoProfesor, bool definitivo, uint yearIngreso, IEmpleadoPublico.TipoMedico tipoMedico, int padding) :
-            base(nombre, apellidos, edad, padding)
+        public bool DestinoDefinitivo
         {
-            Materia = materia;
-            TipoProfesor = tipoProfesor;
-            YearIngreso = yearIngreso;
-            DestinoDefinitivo = definitivo;
-            FechaIngreso = new DateTime((int) yearIngreso, 9, 1);
-            Medico = tipoMedico;
+            get { return destinoDefinitivo; }
+            set { destinoDefinitivo = value; }
+        }
+
+        public DateTime FechaIngreso
+        {
+            get { return fechaIngreso; }
+            set { fechaIngreso = value; }
+        }
+
+        public IEmpleadoPublico.TipoMedico Medico
+        {
+            get => tipoMedico;
+            set => tipoMedico = value;
         }
 
         public ProfesorFuncionario()
@@ -54,28 +61,7 @@ namespace _2HerenciaSimpleIES.Clases
             Medico = tipoMedico;
         }
 
-        public uint YearIngreso
-        {
-            get { return yearIngreso; }
-            set { yearIngreso = value > 0 ? value : 0; }
-        }
-
-        public bool DestinoDefinitivo
-        {
-            get { return destinoDefinitivo; }
-            set {  destinoDefinitivo = value; }
-        }
-
-        public DateTime FechaIngreso
-        {
-            get { return fechaIngreso; }
-            set { fechaIngreso = value; }
-        }
-
-        public IEmpleadoPublico.TipoMedico Medico {
-            get => tipoMedico;
-            set => tipoMedico = value;
-        }
+        
 
         public (int anios, int meses, int dias) 
             TiempoServicio()
@@ -106,9 +92,7 @@ namespace _2HerenciaSimpleIES.Clases
 
         public override string ToString()
         {
-            return base.ToStringProfesor() + $"{YearIngreso}".PadRight(base.Padding) +
-                $"{(DestinoDefinitivo ? "SI" : "NO")}".PadRight(base.Padding) +
-                Medico;
+            return ToStringProfesor() + DatosFuncionario();
         }
 
         public int GetSexenios() => (DateTime.Now.Year - FechaIngreso.Year) / 6;

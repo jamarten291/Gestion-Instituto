@@ -26,12 +26,6 @@ namespace _2HerenciaSimpleIES.Clases
 
         public TipoFuncionario TipoProfesor { get; set; }
 
-        public Profesor(string nombre, string apellido, uint edad, int padding) : 
-            base(nombre, apellido, edad, padding) 
-        {
-            Email = GenerateEmail();
-        }
-
         protected Profesor()
         {
         }
@@ -50,9 +44,8 @@ namespace _2HerenciaSimpleIES.Clases
 
         public string ToStringProfesor()
         {
-            return base.ToString() + 
-                Materia.PadRight(base.Padding) + 
-                $"{TipoProfesor}".PadRight(base.Padding);
+            return $"Materia: {Materia}\n" +
+                   $"Tipo de Profesor: {TipoProfesor}\n";
         }
     }
 }
